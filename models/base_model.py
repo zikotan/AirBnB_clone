@@ -33,7 +33,7 @@ class BaseModel:
             self.updated_at = datetime.today()
             models.storage.save()
 
-        def to_dict(self)
+        def to_dict(self):
             """the dic of the instance
             """
             myDict = self.__dict__copy()

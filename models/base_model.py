@@ -28,22 +28,22 @@ class BaseModel:
         else:
             models.storage.new(self)
 
-        def save(self):
-            """update"""
-            self.updated_at = datetime.today()
-            models.storage.save()
+    def save(self):
+        """update"""
+        self.updated_at = datetime.today()
+        models.storage.save()
 
-        def to_dict(self):
-            """the dic of the instance
-            """
-            myDict = self.__dict__copy()
-            myDict["created_at"] = self.created_at.isoformat()
-            myDict["updated_at"] = self.updated_at.isoformat()
-            myDict["__class__"] = self.__class__.__name__
-            return myDict
+    def to_dict(self):
+        """the dic of the instance
+        """
+        myDict = self.__dict__.copy()
+        myDict["created_at"] = self.created_at.isoformat()
+        myDict["updated_at"] = self.updated_at.isoformat()
+        myDict["__class__"] = self.__class__.__name__
+        return myDict
 
-        def __str__(self):
-            """representation of the instance
-            """
-            myName = self.__class__.__name__
-            return "[{}] ({}) {}".format(myName, self.id, self.__dict__)
+    def __str__(self):
+        """representation of the instance
+        """
+        myName = self.__class__.__name__
+        return "[{}] ({}) {}".format(myName, self.id, self.__dict__)

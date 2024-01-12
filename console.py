@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""the HBnB"""
 import cmd
 import re
 from shlex import split
@@ -81,7 +82,7 @@ class HBNBCommand(cmd.Cmd):
         print("")
         return True
 
-    def myCreate(self, arg)
+    def myCreate(self, arg):
         """Create"""
         argL = myPerse(arg)
         if len(argL) == 0:
@@ -175,11 +176,11 @@ class HBNBCommand(cmd.Cmd):
 
         if len(argL) == 4:
             o = objDict["{}.{}".format(argL[0], argL[1])]
-            if argL[2] i o.__class__.__dict__.keys():
+            if argL[2] in o.__class__.__dict__.keys():
                 valT = type(o.__class__.__dict__[argL[2]])
                 o.__dict__[argL[2]] = valT(argL[3])
             else:
-                o.__dict__[argL[2]] = argL[3])
+                o.__dict__[argL[2]] = argL[3]
         elif type(eval(argL[2])) == dict:
             o = objDict["{}.{}".format(argL[0], argL[1])]
             for k, v in eval(argL[2]).items():
@@ -192,5 +193,5 @@ class HBNBCommand(cmd.Cmd):
         storage.save()
 
 
-    if __name__ == "__main__":
-        HBNBCommand().cmdloop()
+if __name__ == "__main__":
+    HBNBCommand().cmdloop()

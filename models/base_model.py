@@ -12,8 +12,8 @@ class BaseModel:
         """Initialisation
 
         Args:
-            *args: arg1
-            **kwargs: arg2
+            *args (any): arg1
+            **kwargs (dict): arg2
         """
         myFormat = "%Y-%m-%dT%H:%M:%S.%f"
         self.id = str(uuid4())

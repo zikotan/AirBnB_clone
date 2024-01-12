@@ -32,9 +32,9 @@ def myPerse(arg):
 
 
 class HBNBCommand(cmd.Cmd):
-    """the HolbertonBnb
+    """It defines the HolbertonBnb cmd interpreter.
     Attributes:
-        prompt (str):arg
+        prompt (str): cmd prompt
     """
 
     prompt = " (hbnb) "
@@ -48,18 +48,18 @@ class HBNBCommand(cmd.Cmd):
         "Review"
     }
 
-    def emptyL(self):
-        """empty line"""
+    def emptyline(self):
+        """It only receives an empty line."""
         pass
 
-    def deflt(self, arg):
-        """default"""
+    def default(self, arg):
+        """Default behavior cmd for invalid input."""
         argDict = {
-            "all":self.myAll,
-            "show":self.myShow,
-            "destroy":self.myDest,
-            "count":self.myCount,
-            "update":self.myUp
+            "all": self.do_all,
+            "show": self.do_how,
+            "destroy": self.do_destroy,
+            "count": self.do_count,
+            "update": self.do_update
         }
         exact = re.search(r"\.", arg)
         if exact is not None:
@@ -73,17 +73,19 @@ class HBNBCommand(cmd.Cmd):
         print("*** Unknown syntax: {}".format(arg))
         return False
 
-    def myQuit(self, arg):
-        """Quit"""
+    def do_quit(self, arg):
+        """Quit command to exit the program."""
         return True
 
-    def MyEOF(self, arg):
-        """EOF"""
+    def do_EOF(self, arg):
+        """EOF signal to exit."""
         print("")
         return True
 
-    def myCreate(self, arg):
-        """Create"""
+    def do_create(self, arg):
+        """Use: create <class>
+        Create a new class instance and print its id.
+        """
         argL = myPerse(arg)
         if len(argL) == 0:
             print("** class name missing **")
@@ -93,8 +95,10 @@ class HBNBCommand(cmd.Cmd):
             print(eval(argL[0])().id)
             storage.save()
 
-    def myShow(self, arg):
-        """Show"""
+    def do_show(self, arg):
+        """Use: show <class> <id> or <class>.show(<id>)
+        Shows the representation of a class instance of an id given.
+        """
         argL = myPerse(arg)
         objDict = storage.all()
         if len(argL) == 0:
@@ -102,14 +106,16 @@ class HBNBCommand(cmd.Cmd):
         elif argL[0] not in HBNBCommand.__classes:
             print("** class deosn't exist **")
         elif len(argL) == 1:
-            print("** instance id missing **")     
+            print("** instance id missing **")
         elif "{}.{}".format(argL[0], argL[1]) not in objDict:
             print("** no instance found **")
         else:
             print(objDict["{}.{}".format(argL[0], argL[1])])
 
-    def myDest(self, arg):
-        """Destroy"""
+    def do_destroy(self, arg):
+        """Use: destroy <class> <id> or <class>.destroy(<id>)
+        Delete a class instance of an id given.
+        """
         argL = myPerse(arg)
         objDict = storage.all()
         if len(argL) == 0:
@@ -124,13 +130,15 @@ class HBNBCommand(cmd.Cmd):
             del objDict["{}.{}".format(argL[0], argL[1])]
             storage.save()
 
-    def myAll(self, arg):
-        """All"""
+    def do_all(self, arg):
+        """Use: all <class> or all <class> or <class>.all()
+         Shows the representation of a class instance of an id given.
+         Or all classes if no class given"""
         argL = myPerse(arg)
         if len(argL) > 0 and argL[0] not in HBNBCommand.__classes:
             print("** class deosn't exist **")
         else:
-            objL =[]
+            objL = []
             for o in storage.all().values():
                 if len(argL) > 0 and argL[0] == o.__class__.__name__:
                     objL.append(o.__str__())
@@ -138,17 +146,28 @@ class HBNBCommand(cmd.Cmd):
                     objL.append(o.__str__())
             print(objL)
 
-    def myCount(self, arg):
-        """Count"""
+    def do_count(self, arg):
+        """Use: count <class> or <class>.count()
+        Pritns the number of instances of the given class.
+        """
         argL = myPerse(arg)
-        c = 0
-        for o in storage.all().values():
-            if argL[0] == o.__class__.__name__:
-               c += 1
-        print(c)
+        if len(argL) == 0:
+            print("** class name missing **")
+        elif argL[0] not in HBNBCommand.__classes:
+            print("** class deosn't exist **")
+        else:
+            c = 0
+            for o in storage.all().values():
+                if argL[0] == o.__class__.__name__:
+                    c += 1
+            print(c)
 
-    def myUp(self, arg):
-        """Update"""
+    def do_update(self, arg):
+        """Use: update <class> <id> <attribute_name> <attribute_value>
+        or <class>.update(<id>, <attribute_name>, <attribute_value>)
+        or <class>.update(<id>, <dictionary>)
+        Updates a class instance of an id given.
+        """
         argL = myPerse(arg)
         objDict = storage.all()
 
@@ -185,7 +204,7 @@ class HBNBCommand(cmd.Cmd):
             o = objDict["{}.{}".format(argL[0], argL[1])]
             for k, v in eval(argL[2]).items():
                 if (k in o.__class__.__dict__.keys() and
-                        type(o.__class__.__dict__[k]) in {str, int , float}):
+                        type(o.__class__.__dict__[k]) in {str, int, float}):
                     valT = type(o.__class__.__dict__[k])
                     o.__dict__[k] = valT[v]
                 else:

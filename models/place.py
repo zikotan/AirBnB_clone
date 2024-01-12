@@ -5,7 +5,7 @@ from models.base_model import BaseModel
 
 class Place(BaseModel):
     """Place
-    
+
     Attributes:
         city_id (str): arg1
         user_id (str): arg2
@@ -19,7 +19,7 @@ class Place(BaseModel):
         longitude (float): arg10
         amenity_ids (list): arg11
     """
-    
+
     city_id = ""
     user_id = ""
     name = ""

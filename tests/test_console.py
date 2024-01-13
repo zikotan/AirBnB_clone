@@ -52,20 +52,19 @@ class TestHBNBCommand_help(unittest.TestCase):
             self.assertEqual(h, output.getvalue().strip())
 
     def test_help_destroy(self):
-        h = ("Usage: destroy <class> <id> or <class>.destroy(<id>)\n        "
-             "Delete a class instance of a given id.")
-        with patch("sys.stdout", new=StringIO()) as output:
+        c = ("Use: destroy <class> <id> or <class>.destroy(<id>)\n        "
+        "Delete a class instance of an id given.")
+        with patch('sys.stdout', new=StringIO()) as f:
             self.assertFalse(HBNBCommand().onecmd("help destroy"))
-            self.assertEqual(h, output.getvalue().strip())
+            self.assertEqual(c, f.getvalue().strip())
 
     def test_help_all(self):
-        h = ("Usage: all or all <class> or <class>.all()\n        "
-             "Display string representations of all instances of a given class"
-             ".\n        If no class is specified, displays all instantiated "
-             "objects.")
-        with patch("sys.stdout", new=StringIO()) as output:
+        c = ("Use: all <class> or all <class> or <class>.all()\n        "
+        "Shows the representation of a class instance of an id given.\n        "
+        "Or all classes if no class given")
+        with patch('sys.stdout', new=StringIO()) as f:
             self.assertFalse(HBNBCommand().onecmd("help all"))
-            self.assertEqual(h, output.getvalue().strip())
+            self.assertEqual(c, f.getvalue().strip())
 
     def test_help_count(self):
         c = ("Use: count <class> or <class>.count()\n        "

@@ -143,5 +143,37 @@ class TestHBNBCommand_create(unittest.TestCase):
             self.assertEqual(c, f.getvalue().strip())
 
 
+class TestHBNBCommand_create(unittest.TestCase):
+    """The show unittests"""
+
+    @classmethod
+    def setUP(self):
+        try:
+            os.rename("file.json", "tmp")
+        except IOError:
+            pass
+        FileStorage.__objects = {}
+
+    @classmethod
+    def tearDown(self):
+        try:
+            os.remove("file.json")
+        except IOError:
+            pass
+        try:
+            os.rename("tmp", "file.json")
+        except IOError:
+            pass
+
+    def test_create_missing_class(self):        
+        c = "** class name missing **"
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("show"))
+            self.assertEqual(c, f.getvalue().strip())
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd(".show()"))
+            self.assertEqual(c, f.getvalue().strip())
+
+
 if __name__ == "__main__":
     unittest.main()

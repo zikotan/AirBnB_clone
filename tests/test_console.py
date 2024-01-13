@@ -24,6 +24,9 @@ from unittest.mock import patch
 class TestHBNBCommand_prompting(unittest.TestCase):
     """Prompting unittests"""
 
+    def test_prompt_string(self):
+        self.assertEqual("(hbnb) ", HBNBCommand.prompt)
+
 
 if __name__ == "__main__":
     unittest.main()

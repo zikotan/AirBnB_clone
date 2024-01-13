@@ -22,7 +22,7 @@ from unittest.mock import patch
 
 
 class TestHBNBCommand_prompting(unittest.TestCase):
-    """Prompting unittests"""
+    """The prompting unittests"""
 
     def test_prompt_string(self):
         self.assertEqual("(hbnb) ", HBNBCommand.prompt)
@@ -33,7 +33,14 @@ class TestHBNBCommand_prompting(unittest.TestCase):
             self.assertEqual("", f.getvalue().strip())
 
 
+class TestHBNBCommand_help(unittest.TestCase):
+    """The help unittests"""
 
+    def test_help_quit(self):
+        c = "Quit command to exit the program."
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("help quit"))
+            self.assertEqual(c, f.getvalue().strip())
 
 
 if __name__ == "__main__":

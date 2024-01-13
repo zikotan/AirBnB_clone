@@ -38,10 +38,10 @@ class TestHBNBCommand_help(unittest.TestCase):
             self.assertEqual(c, f.getvalue().strip())
 
     def test_help_EOF(self):
-        h = "EOF signal to exit."
+        c = "EOF signal to exit the program."
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(HBNBCommand().onecmd("help EOF"))
-            self.assertEqual(h, output.getvalue().strip())
+            self.assertEqual(c, output.getvalue().strip())
 
     def test_help_show(self):
         c = ("Use: show <class> <id> or <class>.show(<id>)\n        "

@@ -69,6 +69,14 @@ class TestHBNBCommand_help(unittest.TestCase):
             self.assertFalse(HBNBCommand().onecmd("help destroy"))
             self.assertEqual(c, f.getvalue().strip())
 
+    def test_help_all(self):
+        c = ("Use: all <class> or all <class> or <class>.all()\n        "
+        "Shows the representation of a class instance of an id given.\n        "
+        "Or all classes if no class given")
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("help all"))
+            self.assertEqual(c, f.getvalue().strip())
+
 
 if __name__ == "__main__":
     unittest.main()

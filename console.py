@@ -132,8 +132,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, arg):
         """Use: all <class> or all <class> or <class>.all()
-         Shows the representation of a class instance of an id given.
-         Or all classes if no class given"""
+        Shows the representation of a class instance of an id given.
+        Or all classes if no class given"""
         argL = myPerse(arg)
         if len(argL) > 0 and argL[0] not in HBNBCommand.__classes:
             print("** class doesn't exist **")

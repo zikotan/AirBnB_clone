@@ -143,7 +143,7 @@ class TestHBNBCommand_create(unittest.TestCase):
             self.assertEqual(c, f.getvalue().strip())
 
 
-class TestHBNBCommand_create(unittest.TestCase):
+class TestHBNBCommand_show(unittest.TestCase):
     """The show unittests"""
 
     @classmethod

@@ -78,7 +78,7 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_EOF(self, arg):
-        """EOF signal to exit."""
+        """EOF signal to exit the program."""
         print("")
         return True
 

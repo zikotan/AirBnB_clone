@@ -21,5 +21,9 @@ from io import StringIO
 from unittest.mock import patch
 
 
+class TestHBNBCommand_prompting(unittest.TestCase):
+    """Prompting unittests"""
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -25,10 +25,10 @@ class TestHBNBCommand_help(unittest.TestCase):
     """Unittests for testing help messages of the HBNB command interpreter."""
 
     def test_help_quit(self):
-        h = "Quit command to exit the program."
-        with patch("sys.stdout", new=StringIO()) as output:
+        c = "Quit command to exit the program."
+        with patch('sys.stdout', new=StringIO()) as f:
             self.assertFalse(HBNBCommand().onecmd("help quit"))
-            self.assertEqual(h, output.getvalue().strip())
+            self.assertEqual(c, f.getvalue().strip())
 
     def test_help_create(self):
         c = ("Use: create <class>\n        "
@@ -38,10 +38,10 @@ class TestHBNBCommand_help(unittest.TestCase):
             self.assertEqual(c, f.getvalue().strip())
 
     def test_help_EOF(self):
-        h = "EOF signal to exit the program."
-        with patch("sys.stdout", new=StringIO()) as output:
+        c = "EOF signal to exit."
+        with patch('sys.stdout', new=StringIO()) as f:
             self.assertFalse(HBNBCommand().onecmd("help EOF"))
-            self.assertEqual(h, output.getvalue().strip())
+            self.assertEqual(c, f.getvalue().strip())
 
     def test_help_show(self):
         c = ("Use: show <class> <id> or <class>.show(<id>)\n        "

@@ -81,10 +81,6 @@ class TestHBNBCommand_help(unittest.TestCase):
             self.assertFalse(HBNBCommand().onecmd("help update"))
             self.assertEqual(c, f.getvalue().strip())
 
-    
-
-
-
 
 if __name__ == "__main__":
     unittest.main()

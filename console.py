@@ -37,7 +37,7 @@ class HBNBCommand(cmd.Cmd):
         prompt (str): cmd prompt
     """
 
-    prompt = " (hbnb) "
+    prompt = "(hbnb) "
     __classes = {
         "BaseModel",
         "User",
@@ -90,7 +90,7 @@ class HBNBCommand(cmd.Cmd):
         if len(argL) == 0:
             print("** class name missing **")
         elif argL[0] not in HBNBCommand.__classes:
-            print("** class deosn't exist **")
+            print("** class doesn't exist **")
         else:
             print(eval(argL[0])().id)
             storage.save()
@@ -104,7 +104,7 @@ class HBNBCommand(cmd.Cmd):
         if len(argL) == 0:
             print("** class name missing **")
         elif argL[0] not in HBNBCommand.__classes:
-            print("** class deosn't exist **")
+            print("** class doesn't exist **")
         elif len(argL) == 1:
             print("** instance id missing **")
         elif "{}.{}".format(argL[0], argL[1]) not in objDict:
@@ -121,7 +121,7 @@ class HBNBCommand(cmd.Cmd):
         if len(argL) == 0:
             print("** class name missing **")
         elif argL[0] not in HBNBCommand.__classes:
-            print("** class deosn't exist **")
+            print("** class doesn't exist **")
         elif len(argL) == 1:
             print("** instance id missing **")
         elif "{}.{}".format(argL[0], argL[1]) not in objDict.keys():
@@ -136,7 +136,7 @@ class HBNBCommand(cmd.Cmd):
          Or all classes if no class given"""
         argL = myPerse(arg)
         if len(argL) > 0 and argL[0] not in HBNBCommand.__classes:
-            print("** class deosn't exist **")
+            print("** class doesn't exist **")
         else:
             objL = []
             for o in storage.all().values():
@@ -154,7 +154,7 @@ class HBNBCommand(cmd.Cmd):
         if len(argL) == 0:
             print("** class name missing **")
         elif argL[0] not in HBNBCommand.__classes:
-            print("** class deosn't exist **")
+            print("** class doesn't exist **")
         else:
             c = 0
             for o in storage.all().values():
@@ -175,7 +175,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return False
         if argL[0] not in HBNBCommand.__classes:
-            print("** class deosn't exist **")
+            print("** class doesn't exist **")
             return False
         if len(argL) == 1:
             print("** instance id missing **")

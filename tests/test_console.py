@@ -105,11 +105,11 @@ class TestHBNBCommand_help(unittest.TestCase):
 class TestHBNBCommand_exit(unittest.TestCase):
     """The exiting unittests"""
 
-    def test_qui_exit(self):
+    def test_qui_exits(self):
         with patch('sys.stdout', new=StringIO()) as f:
             self.assertTrue(HBNBCommand().onecmd("quit"))
 
-    def test_EOF_exit(self):
+    def test_EOF_exits(self):
         with patch('sys.stdout', new=StringIO()) as f:
             self.assertTrue(HBNBCommand().onecmd("EOF"))
 

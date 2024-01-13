@@ -54,6 +54,13 @@ class TestHBNBCommand_help(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as f:
             self.assertFalse(HBNBCommand().onecmd("help create"))
             self.assertEqual(c, f.getvalue().strip())
+    
+    def test_help_show(self):
+        c = ("Use: show <class> <id> or <class>.show(<id>)\n        "
+        "Shows the representation of a class instance of an id given.")
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("help show"))
+            self.assertEqual(c, f.getvalue().strip())
 
 
 if __name__ == "__main__":

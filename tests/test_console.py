@@ -42,6 +42,12 @@ class TestHBNBCommand_help(unittest.TestCase):
             self.assertFalse(HBNBCommand().onecmd("help quit"))
             self.assertEqual(c, f.getvalue().strip())
 
+    def test_help_EOF(self):
+        c = "EOF signal to exit."
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("help EOF"))
+            self.assertEqual(c, f.getvalue().strip())
+
     def test_help_create(self):
         c = ("Use: create <class>\n        "
         "Create a new class instance and print its id.")

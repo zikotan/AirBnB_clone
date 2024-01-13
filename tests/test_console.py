@@ -136,7 +136,7 @@ class TestHBNBCommand_create(unittest.TestCase):
         except IOError:
             pass
 
-    def test_creat_missing_class(self):
+    def test_create_missing_class(self):
         c = "** class name missing **"
         with patch('sys.stdout', new=StringIO()) as f:
             self.assertFalse(HBNBCommand().onecmd("create"))

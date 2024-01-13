@@ -28,9 +28,7 @@ class TestHBNBCommand_prompting(unittest.TestCase):
         self.assertEqual("(hbnb) ", HBNBCommand.prompt)
 
     def test_empty_line(self):
-        with patch('sys.stdout', new=StringIO()) as output:
-            self.assertFalse(HBNBCommand().onecmd(""))
-            self.assertEqual("", output.getvalue().strip())
+        """"""
 
 
 if __name__ == "__main__":

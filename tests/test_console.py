@@ -36,6 +36,14 @@ class TestHBNBCommand_prompting(unittest.TestCase):
 class TestHBNBCommand_help(unittest.TestCase):
     """The help unittests"""
 
+    def test_help(self):
+        c = ("Documented commands (type help <topic>):\n"
+        "========================================\n"
+        "EOF  all  count  create  destroy  help  quit  show  update")
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("help"))
+            self.assertEqual(c, f.getvalue().strip())
+
     def test_help_quit(self):
         c = "Quit command to exit the program."
         with patch('sys.stdout', new=StringIO()) as f:
@@ -92,6 +100,18 @@ class TestHBNBCommand_help(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as f:
             self.assertFalse(HBNBCommand().onecmd("help update"))
             self.assertEqual(c, f.getvalue().strip())
+
+
+class TestHBNBCommand_exit(unittest.TestCase):
+    """The exiting unittests"""
+
+    def test_qui_exit(self):
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertTrue(HBNBCommand().onecmd("quit"))
+
+    def test_EOF_exit(self):
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertTrue(HBNBCommand().onecmd("EOF"))
 
 
 if __name__ == "__main__":

@@ -31,11 +31,11 @@ class TestHBNBCommand_help(unittest.TestCase):
             self.assertEqual(h, output.getvalue().strip())
 
     def test_help_create(self):
-        h = ("Usage: create <class>\n        "
-             "Create a new class instance and print its id.")
-        with patch("sys.stdout", new=StringIO()) as output:
+        c = ("Use: create <class>\n        "
+        "Create a new class instance and print its id.")
+        with patch('sys.stdout', new=StringIO()) as f:
             self.assertFalse(HBNBCommand().onecmd("help create"))
-            self.assertEqual(h, output.getvalue().strip())
+            self.assertEqual(c, f.getvalue().strip())
 
     def test_help_EOF(self):
         h = "EOF signal to exit the program."
@@ -44,12 +44,11 @@ class TestHBNBCommand_help(unittest.TestCase):
             self.assertEqual(h, output.getvalue().strip())
 
     def test_help_show(self):
-        h = ("Usage: show <class> <id> or <class>.show(<id>)\n        "
-             "Display the string representation of a class instance of"
-             " a given id.")
-        with patch("sys.stdout", new=StringIO()) as output:
+        c = ("Use: show <class> <id> or <class>.show(<id>)\n        "
+        "Shows the representation of a class instance of an id given.")
+        with patch('sys.stdout', new=StringIO()) as f:
             self.assertFalse(HBNBCommand().onecmd("help show"))
-            self.assertEqual(h, output.getvalue().strip())
+            self.assertEqual(c, f.getvalue().strip())
 
     def test_help_destroy(self):
         c = ("Use: destroy <class> <id> or <class>.destroy(<id>)\n        "

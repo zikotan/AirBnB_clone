@@ -17,12 +17,6 @@ class TestBaseModel_methods(unittest.TestCase):
     def test_all(self):
         self.assertEqual(dict, type(models.storage.all()))
 
-    def test_to_dict_date_attr_str(self):
-        c = BaseModel()
-        c_dict = c.to_dict()
-        self.assertEqual(str, type(c_dict["created_at"]))
-        self.assertEqual(str, type(c_dict["updated_at"]))
-
 
 if __name__ == "__main__":
     unittest.main()

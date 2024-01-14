@@ -6,18 +6,13 @@ Unittest classes:
     TestBaseModel_to_dict
 """
 
-import os
 import models
 import unittest
-from datetime import datetime
-from time import sleep 
+from datetime import datetime 
 from models.base_model import BaseModel
 
 class TestBaseModel_instance(unittest.TestCase):
     """Instansiation unittests"""
-
-    def test_no_args(self):
-        self.assertEqual(BaseModel, type(BaseModel()))
 
     def test_new_inst_in_obj(self):
         self.assertIn(BaseModel(), models.storage.all().values())

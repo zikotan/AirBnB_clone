@@ -20,7 +20,7 @@ class TestBaseModel_save(unittest.TestCase):
         c.save()
         cId = "BaseModel." + c.id
         with open("file.json", "r") as f:
-            self.assertIn(cId, f.read()
+            self.assertIn(cId, f.read())
 
 
 class TestBaseModel_to_dict(unittest.TestCase):
@@ -31,6 +31,7 @@ class TestBaseModel_to_dict(unittest.TestCase):
         c_dict = c.to_dict()
         self.assertEqual(str, type(c_dict["created_at"]))
         self.assertEqual(str, type(c_dict["updated_at"]))
+
 
 if __name__ == "__main__":
     unittest.main()

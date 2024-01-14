@@ -31,7 +31,7 @@ class TestBaseModel_instance(unittest.TestCase):
         self.assertNotIn(None, c.__dict__.values())
 
 
-class TestBaseModel_instance(unittest.TestCase):
+class TestBaseModel_save(unittest.TestCase):
     """The save method unittests"""
 
     def test_save_with_arg(self):

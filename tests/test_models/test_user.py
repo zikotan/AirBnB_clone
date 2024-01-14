@@ -11,24 +11,6 @@ from models.user import User
 
 class TestBaseModel_save(unittest.TestCase):
     """The save method unittests"""
-    
-    @classmethod
-    def setUp(self):
-        try:
-            os.rename("file.json", "tmp")
-        except IOError:
-            pass
-
-    @classmethod
-    def tearDown(self):
-        try:
-            os.remove("file.json")
-        except IOError:
-            pass
-        try:
-            os.rename("tmp", "file.json")
-        except IOError:
-            pass
 
     def test_save_update_file(self):
         u = User()

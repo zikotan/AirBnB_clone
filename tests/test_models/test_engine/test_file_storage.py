@@ -3,6 +3,7 @@
 
 Unittest classes:
     TestBaseModel_methods
+    TestBaseModel_instances
 """
 
 import models
@@ -15,6 +16,10 @@ from models.engine.file_storage import FileStorage
 class TestBaseModel_methods(unittest.TestCase):
     """The file_storage.py methods unittests"""
     
+    def test_all_args(self):
+        with self.assertRaises(TypeError):
+            models.storage.all(None)
+
     def test_new(self):
         b = BaseModel()
         models.storage.new(b)

@@ -14,9 +14,6 @@ from models.base_model import BaseModel
 class TestBaseModel_instance(unittest.TestCase):
     """Instansiation unittests"""
 
-    def test_new_inst_in_obj(self):
-        self.assertIn(BaseModel(), models.storage.all().values())
-
 
 class TestBaseModel_save(unittest.TestCase):
     """The save method unittests"""

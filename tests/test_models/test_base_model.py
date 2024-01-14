@@ -31,5 +31,14 @@ class TestBaseModel_instance(unittest.TestCase):
         self.assertNotIn(None, c.__dict__.values())
 
 
+class TestBaseModel_instance(unittest.TestCase):
+    """The save method unittests"""
+
+    def test_save_with_arg(self):
+        c = BaseModel()
+        with self.assertRaises(TypeError):
+            c.save(None)
+
+
 if __name__ == "__main__":
     unittest.main()

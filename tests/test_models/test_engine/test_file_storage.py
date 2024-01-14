@@ -8,7 +8,7 @@ Unittest classes:
 import models
 import unittest
 from models.base_model import BaseModel
-from models.user import User
+from models.engine.file_storage import FileStorage
 
 
 class TestBaseModel_methods(unittest.TestCase):
@@ -21,13 +21,20 @@ class TestBaseModel_methods(unittest.TestCase):
         self.assertIn(b, models.storage.all().values())
 
     def test_save(self):
-        u = BaseModel()
-        models.storage.new(u)
+        b = BaseModel()
+        models.storage.new(b)
         models.storage.save()
         text = ""
         with open("file.json", "r") as f:
             text = f.read()
-            self.assertIn("BaseModel." + u.id, text)
+            self.assertIn("BaseModel." + b.id, text)
+
+    def test_reload(self):
+        b = BaseModel()
+        models.storage.new(b)
+        models.storage.save()
+        o = FileStorage._FileStorage__objects    
+        self.assertIn("BaseModel." + b.id, o)
 
 
 if __name__ == "__main__":

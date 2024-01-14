@@ -6,6 +6,8 @@ Unittest classes:
 """
 
 import unittest
+import os
+from models.user import User
 
 class TestBaseModel_save(unittest.TestCase):
     """The save method unittests"""

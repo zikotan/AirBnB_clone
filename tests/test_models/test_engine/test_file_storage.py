@@ -15,7 +15,10 @@ from models.engine.file_storage import FileStorage
 
 class TestBaseModel_methods(unittest.TestCase):
     """The file_storage.py methods unittests"""
-    
+   
+    def test_all(self):
+        self.assertEqual(dict, type(models.storage.all()))
+
     def test_all_args(self):
         with self.assertRaises(TypeError):
             models.storage.all(None)

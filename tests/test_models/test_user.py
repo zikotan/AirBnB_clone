@@ -8,6 +8,7 @@ Unittest classes:
 import unittest
 import os
 from models.user import User
+from datetime import datetime
 
 
 class TestBaseModel_instances(unittest.TestCase):
@@ -33,6 +34,14 @@ class TestBaseModel_instances(unittest.TestCase):
 
     def test_inst_no_args(self):
         self.assertEqual(type(User()), User)
+
+    def test_inst_with_kwargs(self):
+        d = datetime.today()
+        d_form = d.isoformat()
+        u = User(id="0", created_at=d_form, updated_at=d_form)
+        self.assertEqual(u.id,  "0")
+        self.assertEqual(u.created_at, d)
+        self.assertEqual(u.updated_at, d)
 
 
 class TestBaseModel_save(unittest.TestCase):

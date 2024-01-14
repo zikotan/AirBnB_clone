@@ -8,6 +8,7 @@ Unittest classes:
 import models
 import unittest
 from models.base_model import BaseModel
+from models.user import User
 from models.engine.file_storage import FileStorage
 
 
@@ -19,6 +20,10 @@ class TestBaseModel_methods(unittest.TestCase):
         models.storage.new(b)
         self.assertIn("BaseModel." + b.id, models.storage.all().keys())
         self.assertIn(b, models.storage.all().values())
+        u = User()
+        models.storage.new(u)
+        self.assertIn("User." + u.id, models.storage.all().keys())
+        self.assertIn(u, models.storage.all().values())
 
     def test_save(self):
         b = BaseModel()
@@ -32,7 +37,6 @@ class TestBaseModel_methods(unittest.TestCase):
     def test_reload(self):
         b = BaseModel()
         models.storage.new(b)
-        models.storage.save()
         o = FileStorage._FileStorage__objects    
         self.assertIn("BaseModel." + b.id, o)
 

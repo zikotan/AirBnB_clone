@@ -8,6 +8,7 @@ Unittest classes:
 import models
 import unittest
 from models.base_model import BaseModel
+from models.user import User
 
 
 class TestBaseModel_methods(unittest.TestCase):
@@ -18,6 +19,17 @@ class TestBaseModel_methods(unittest.TestCase):
         models.storage.new(b)
         self.assertIn("BaseModel." + b.id, models.storage.all().keys())
         self.assertIn(b, models.storage.all().values())
+
+    def test_save(self):
+        #b = BaseModel()
+        u = User()
+        #models.storage.new(b)
+        models.storage.new(u)
+        text = ""
+        with open("file.json", "r") as f:
+            text = f.read()
+            #self.assertIn("BaseModel." + b.id, text)
+            self.assertIn("User." + u.id, text)
 
 
 if __name__ == "__main__":

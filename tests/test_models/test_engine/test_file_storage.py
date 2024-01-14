@@ -7,7 +7,6 @@ Unittest classes:
 
 import models
 import unittest
-from datetime import datetime 
 from models.base_model import BaseModel
 
 
@@ -17,8 +16,8 @@ class TestBaseModel_methods(unittest.TestCase):
     def test_new(self):
         b = BaseModel()
         models.storage.new(b)
-        self.assertIn("BaseModel." + b.id, models.all().keys())
-        self.assertIn(b, models.all().values())
+        self.assertIn("BaseModel." + b.id, models.storage.all().keys())
+        self.assertIn(b, models.storage.all().values())
 
 
 if __name__ == "__main__":

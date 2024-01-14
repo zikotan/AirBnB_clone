@@ -39,6 +39,13 @@ class TestBaseModel_save(unittest.TestCase):
         with self.assertRaises(TypeError):
             c.save(None)
 
+    def test_save_update_file(self):
+        c = BaseModel()
+        c.save()
+        cId = "BaseModel." + c.id
+        with open("file.json", "r") as f:
+            self.assertIn(cId, f.read())
+
 
 if __name__ == "__main__":
     unittest.main()

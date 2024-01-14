@@ -20,6 +20,9 @@ class TestBaseModel_instance(unittest.TestCase):
     def test_new_inst_in_obj(self):
         self.assertIn(BaseModel(), models.storage.all().values())
 
+    def test_id_pub_date(self):
+        self.assertEqual(str, type(BaseModel().id))
+
 
 if __name__ == "__main__":
     unittest.main()

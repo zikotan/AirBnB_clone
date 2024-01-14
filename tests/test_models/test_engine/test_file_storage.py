@@ -19,8 +19,8 @@ class TestBaseModel_instances(unittest.TestCase):
     def test_FS_inst_no_arg(self):
         self.assertEqual(type(FileStorage()), FileStorage)
 
-    def test_Storage_inistial(self):
-        self.assertEqual(type(model_storage), FileStorage)
+    def test_storage_inistial(self):
+        self.assertEqual(type(models.storage), FileStorage)
 
 
 class TestBaseModel_methods(unittest.TestCase):

@@ -20,5 +20,15 @@ class TestBaseModel_save(unittest.TestCase):
             self.assertIn(uId, f.read())
 
 
+class TestBaseModel_to_dict(unittest.TestCase):
+    """The save method unittests"""
+
+    def test_to_dict_date_attr_str(self):
+        u = User()
+        u_dict = u.to_dict()
+        self.assertEqual(str, type(u_dict["id"]))
+        self.assertEqual(str, type(u_dict["created_at"]))
+        self.assertEqual(str, type(u_dict["updated_at"]))
+
 if __name__ == "__main__":
     unittest.main()

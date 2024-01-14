@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """The base_model.py unittests
+
 Unittest classes:
-    TestBaseModel_instance
     TestBaseModel_save
     TestBaseModel_to_dict
 """
@@ -12,8 +12,19 @@ from datetime import datetime
 from models.base_model import BaseModel
 
 
-class TestBaseModel_to_dict(unittest.TestCase):
+class TestBaseModel_save(unittest.TestCase):
     """The save method unittests"""
+
+    def test_save_update_file(self):
+        c = BaseModel()
+        c.save()
+        cId = "BaseModel." + c.id
+        with open("file.json", "r") as f:
+            self.assertIn(cId, f.read()
+
+
+class TestBaseModel_to_dict(unittest.TestCase):
+    """The to_dict method unittests"""
     
     def test_to_dict_date_attr_str(self):
         c = BaseModel()

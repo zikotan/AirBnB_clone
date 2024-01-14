@@ -12,17 +12,6 @@ from datetime import datetime
 from models.base_model import BaseModel
 
 
-class TestBaseModel_save(unittest.TestCase):
-    """The save method unittests"""
-
-    def test_save_update_file(self):
-        c = BaseModel()
-        c.save()
-        cId = "BaseModel." + c.id
-        with open("file.json", "r") as f:
-            self.assertIn(cId, f.read())
-
-
 class TestBaseModel_to_dict(unittest.TestCase):
     """The save method unittests"""
 

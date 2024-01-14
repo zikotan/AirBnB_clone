@@ -16,7 +16,12 @@ class TestBaseModel_methods(unittest.TestCase):
 
     def test_all(self):
         self.assertEqual(dict, type(models.storage.all()))
-
+    
+    def test_new(self):
+        b = BaseModel()
+        models.storage.new(b)
+        self.assertIn("BaseModel." + b.id, models.all().keys())
+        self.assertIn(b, models.all().values())
 
 if __name__ == "__main__":
     unittest.main()

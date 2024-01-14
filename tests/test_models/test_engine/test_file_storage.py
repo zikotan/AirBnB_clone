@@ -21,14 +21,11 @@ class TestBaseModel_methods(unittest.TestCase):
         self.assertIn(b, models.storage.all().values())
 
     def test_save(self):
-        #b = BaseModel()
         u = User()
-        #models.storage.new(b)
         models.storage.new(u)
         text = ""
         with open("file.json", "r") as f:
             text = f.read()
-            #self.assertIn("BaseModel." + b.id, text)
             self.assertIn("User." + u.id, text)
 
 

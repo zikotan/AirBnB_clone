@@ -23,6 +23,7 @@ class TestBaseModel_methods(unittest.TestCase):
     def test_save(self):
         u = User()
         models.storage.new(u)
+        models.storage.save()
         text = ""
         with open("file.json", "r") as f:
             text = f.read()

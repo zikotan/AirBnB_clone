@@ -28,17 +28,23 @@ class TestBaseModel_methods(unittest.TestCase):
     def test_save(self):
         b = BaseModel()
         models.storage.new(b)
+        u = User()
+        models.storage.new(u)
         models.storage.save()
         text = ""
         with open("file.json", "r") as f:
             text = f.read()
             self.assertIn("BaseModel." + b.id, text)
+            self.assertIn("User." + u.id, text)
 
     def test_reload(self):
         b = BaseModel()
         models.storage.new(b)
+        u = User()
+        models.storage.new(u)
         o = FileStorage._FileStorage__objects    
         self.assertIn("BaseModel." + b.id, o)
+        self.assertIn("User." + u.id, o)
 
 
 if __name__ == "__main__":

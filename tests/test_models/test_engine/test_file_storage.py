@@ -18,6 +18,16 @@ class TestBaseModel_instances(unittest.TestCase):
 
     def test_FS_inst_no_arg(self):
         self.assertEqual(type(FileStorage()), FileStorage)
+    
+    def test_FS_inst_with_arg(self):
+        with self.assertRaises(TypeError):
+            FileStorage(None)
+
+    def test_FL_path_str(self):
+        self.assertEqual(str, type(FileStorage._FileStorage__file_path))
+
+    def test_FL_obj_dict(self):
+        self.assertEqual(dict, type(FileStorage._FileStorage__objects))
 
     def test_storage_inistial(self):
         self.assertEqual(type(models.storage), FileStorage)

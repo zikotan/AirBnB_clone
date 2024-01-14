@@ -19,6 +19,9 @@ class TestBaseModel_instances(unittest.TestCase):
     def test_FS_inst_no_arg(self):
         self.assertEqual(type(FileStorage()), FileStorage)
 
+    def test_Storage_inistial(self):
+        self.assertEqual(type(model_storage), FileStorage)
+
 
 class TestBaseModel_methods(unittest.TestCase):
     """The file_storage.py methods unittests"""

@@ -3,14 +3,9 @@
 
 Unittest classes:
     TestBaseModel_save
-    TestBaseModel_to_dict
 """
 
-import models
 import unittest
-from datetime import datetime 
-from models.base_model import BaseModel
-
 
 class TestBaseModel_save(unittest.TestCase):
     """The save method unittests"""

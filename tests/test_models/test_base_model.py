@@ -17,6 +17,9 @@ class TestBaseModel_instance(unittest.TestCase):
     def test_no_args(self):
         self.assertEqual(BaseModel, type(BaseModel()))
 
+    def test_new_inst_in_obj(self):
+        self.assertIn(BaseModel(), models.storage.all().values())
+
 
 if __name__ == "__main__":
     unittest.main()

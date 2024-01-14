@@ -13,6 +13,13 @@ from models.user import User
 from models.engine.file_storage import FileStorage
 
 
+class TestBaseModel_instances(unittest.TestCase):
+    """The file_storage.py instansiation unittests"""
+
+    def test_FS_inst_no_arg(self):
+        self.assertEqual(type(FileStorage()), FileStorage)
+
+
 class TestBaseModel_methods(unittest.TestCase):
     """The file_storage.py methods unittests"""
    

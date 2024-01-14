@@ -11,9 +11,6 @@ import unittest
 from datetime import datetime 
 from models.base_model import BaseModel
 
-class TestBaseModel_instance(unittest.TestCase):
-    """Instansiation unittests"""
-
 
 class TestBaseModel_save(unittest.TestCase):
     """The save method unittests"""

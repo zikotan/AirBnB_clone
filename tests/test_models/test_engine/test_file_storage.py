@@ -6,6 +6,7 @@ Unittest classes:
     TestBaseModel_instances
 """
 
+import os
 import models
 import unittest
 from models.base_model import BaseModel
@@ -15,6 +16,25 @@ from models.engine.file_storage import FileStorage
 
 class TestBaseModel_instances(unittest.TestCase):
     """The file_storage.py instansiation unittests"""
+
+    @classmethod
+    def setUp(self):
+        try:
+            os.rename("file.json", "tmp")
+        except IOError:
+            pass
+
+    @classmethod
+    def tearDown(self):
+        try:
+            os.remove("file.json")
+        except IOError:
+            pass
+        try:
+            os.rename("tmp", "file.json")
+        except IOError:
+            pass
+        FileStorage._FileStorage__objects = {}
 
     def test_FS_inst_no_arg(self):
         self.assertEqual(type(FileStorage()), FileStorage)

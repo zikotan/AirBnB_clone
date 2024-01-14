@@ -26,6 +26,10 @@ class TestBaseModel_instance(unittest.TestCase):
     def test_create_at_pub_date(self):
         self.assertEqual(datetime, type(BaseModel().created_at))
 
+    def test_args_unused(self):
+        c = BaseModel(None)
+        self.assertNotIn(None, c.__dict__.values())
+
 
 if __name__ == "__main__":
     unittest.main()
